@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import API_URL from "../utils/api";
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ function Dashboard() {
       return;
     }
 
-    fetch("http://localhost:5000/api/auth/users", {
+    fetch(`${API_URL}/api/auth/users`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -31,7 +32,7 @@ function Dashboard() {
           email: user.email,
           createdAt: user.createdAt
             ? new Date(user.createdAt).toLocaleDateString()
-            : new Date().toLocaleDateString(), // ✅ dynamic
+            : new Date().toLocaleDateString(),
           role: roles[index % roles.length],
           status: index % 2 === 0 ? "Active" : "Inactive",
         }));
@@ -52,13 +53,7 @@ function Dashboard() {
   return (
     <div style={{ padding: "40px" }}>
       {/* Header */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          marginBottom: "20px",
-        }}
-      >
+      <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "20px" }}>
         <h2>User Dashboard</h2>
         <button
           onClick={handleLogout}
@@ -76,13 +71,7 @@ function Dashboard() {
       </div>
 
       {/* Table */}
-      <div
-        style={{
-          background: "#fff",
-          borderRadius: "10px",
-          boxShadow: "0 10px 25px rgba(0,0,0,0.08)",
-        }}
-      >
+      <div style={{ background: "#fff", borderRadius: "10px", boxShadow: "0 10px 25px rgba(0,0,0,0.08)" }}>
         <table style={{ width: "100%", borderCollapse: "collapse" }}>
           <thead>
             <tr style={{ background: "#f8fafc" }}>
@@ -100,63 +89,23 @@ function Dashboard() {
             {users.map((user) => (
               <tr key={user.id} style={{ borderBottom: "1px solid #e5e7eb" }}>
                 <td style={td}>{user.id}</td>
-
                 <td style={td}>
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "10px",
-                    }}
-                  >
-                    <img
-                      src="/user.png"
-                      alt="user"
-                      style={{
-                        width: "36px",
-                        height: "36px",
-                        borderRadius: "50%",
-                        objectFit: "cover",
-                      }}
-                    />
+                  <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                    <img src="/user.png" alt="user" style={{ width: "36px", height: "36px", borderRadius: "50%" }} />
                     <span>{user.name}</span>
                   </div>
                 </td>
-
                 <td style={td}>{user.email}</td>
                 <td style={td}>{user.createdAt}</td>
                 <td style={td}>{user.role}</td>
-
                 <td style={td}>
-                  <span
-                    style={{
-                      color:
-                        user.status === "Active" ? "#22c55e" : "#ef4444",
-                      fontWeight: 500,
-                    }}
-                  >
+                  <span style={{ color: user.status === "Active" ? "#22c55e" : "#ef4444" }}>
                     ● {user.status}
                   </span>
                 </td>
-
                 <td style={td}>
-                  <img
-                    src="/setting.png"
-                    alt="settings"
-                    style={{
-                      width: "18px",
-                      marginRight: "10px",
-                      cursor: "pointer",
-                    }}
-                  />
-                  <img
-                    src="/cancel.png"
-                    alt="delete"
-                    style={{
-                      width: "18px",
-                      cursor: "pointer",
-                    }}
-                  />
+                  <img src="/setting.png" alt="settings" style={{ width: "18px", marginRight: "10px" }} />
+                  <img src="/cancel.png" alt="delete" style={{ width: "18px" }} />
                 </td>
               </tr>
             ))}
@@ -167,15 +116,7 @@ function Dashboard() {
   );
 }
 
-const th = {
-  padding: "14px",
-  textAlign: "left",
-  fontWeight: 600,
-};
-
-const td = {
-  padding: "14px",
-  color: "#334155",
-};
+const th = { padding: "14px", textAlign: "left", fontWeight: 600 };
+const td = { padding: "14px", color: "#334155" };
 
 export default Dashboard;
