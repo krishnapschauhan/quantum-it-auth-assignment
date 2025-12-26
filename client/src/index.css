@@ -1,0 +1,152 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* BACKGROUND */
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f766e, #0ea5a5);
+}
+
+/* ================= AUTH PAGE CENTER ================= */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* wrapper */
+.auth-wrapper {
+  position: relative;
+}
+
+/* top tab */
+.auth-tab {
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #22d3ee;
+  padding: 14px 42px;
+  border-radius: 8px;
+  color: #0f172a;
+  font-weight: bold;
+  font-size: 16px;
+  letter-spacing: 1px;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
+}
+
+/* card */
+.auth-container {
+  width: 400px;
+  background: #1e293b;
+  padding: 34px 32px;
+  border-radius: 14px;
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.45);
+}
+
+/* avatar */
+.avatar-wrapper {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: radial-gradient(
+      circle at 30% 20%,
+      rgba(255, 255, 255, 0.25),
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 70% 80%,
+      rgba(255, 255, 255, 0.15),
+      transparent 50%
+    );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-wrapper img {
+  width: 70px;
+}
+
+/* input with icon */
+.input-group {
+  position: relative;
+  margin-bottom: 14px;
+}
+
+.input-group img {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  width: 18px;
+  transform: translateY(-50%);
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 12px 12px 40px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  background: #334155;
+  color: #e5e7eb;
+}
+
+.input-group input::placeholder {
+  color: #94a3b8;
+}
+
+/* forgot */
+.forgot {
+  text-align: right;
+  font-size: 12px;
+  color: #22d3ee;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+/* button */
+.auth-form button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+  background: #22d3ee;
+  color: #0f172a;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.auth-form button:hover {
+  background: #06b6d4;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 480px) {
+  .auth-container {
+    width: 100%;
+    padding: 26px 20px;
+  }
+
+  .auth-tab {
+    padding: 12px 28px;
+    font-size: 14px;
+  }
+
+  .avatar-wrapper {
+    width: 75px;
+    height: 75px;
+  }
+
+  .avatar-wrapper img {
+    width: 55px;
+  }
+}
