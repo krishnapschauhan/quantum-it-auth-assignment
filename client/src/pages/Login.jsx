@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import API_URL from "../utils/api";
 
 function Login() {
   const navigate = useNavigate();
@@ -11,13 +10,16 @@ function Login() {
   });
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch(`${API_URL}/api/auth/login`, {
+    const response = await fetch("http://localhost:5000/api/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
@@ -47,18 +49,42 @@ function Login() {
           <form className="auth-form" onSubmit={handleSubmit}>
             <div className="input-group">
               <img src="/user1.png" alt="username" />
-              <input name="name" placeholder="Username" value={formData.name} onChange={handleChange} required />
+              <input
+                name="name"
+                placeholder="Username"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
             </div>
 
             <div className="input-group">
               <img src="/lock.png" alt="password" />
-              <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} required />
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+              />
             </div>
+
+            <div className="forgot">Forgot password?</div>
 
             <button type="submit">LOGIN</button>
 
-            <p style={{ marginTop: "14px", textAlign: "center", color: "#94a3b8" }}>
-              Don’t have an account? <Link to="/register">Register</Link>
+            <p
+              style={{
+                marginTop: "14px",
+                textAlign: "center",
+                color: "#94a3b8",
+              }}
+            >
+              Don’t have an account?{" "}
+              <Link to="/register" style={{ color: "#22d3ee" }}>
+                Register
+              </Link>
             </p>
           </form>
         </div>
