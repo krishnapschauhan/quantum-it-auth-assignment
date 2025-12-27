@@ -5,7 +5,7 @@ const User = require("../models/User");
 
 const router = express.Router();
 
-// ================= REGISTER =================
+//REGISTER 
 router.post("/register", async (req, res) => {
   try {
     const { name, dob, email, password } = req.body;
@@ -49,12 +49,12 @@ router.post("/register", async (req, res) => {
   }
 });
 
-// ================= LOGIN (USERNAME + PASSWORD) =================
+// LOGIN
 router.post("/login", async (req, res) => {
   try {
     const { name, password } = req.body;
 
-    // find user by username (case-insensitive)
+    //find user
     const user = await User.findOne({
       name: new RegExp(`^${name}$`, "i"),
     });
@@ -63,13 +63,13 @@ router.post("/login", async (req, res) => {
       return res.status(400).json({ message: "Invalid credentials" });
     }
 
-    // compare password
+    // password
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return res.status(400).json({ message: "Invalid credentials" });
     }
 
-    // generate token
+    //token
     const token = jwt.sign(
       { id: user._id },
       process.env.JWT_SECRET || "secret123",
@@ -90,7 +90,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
-// ================= GET ALL USERS (PROTECTED) =================
+//GET ALL USERS
 router.get("/users", async (req, res) => {
   try {
     const authHeader = req.headers.authorization;
