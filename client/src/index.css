@@ -5,13 +5,11 @@
   font-family: "Segoe UI", sans-serif;
 }
 
-/* BACKGROUND */
 body {
   min-height: 100vh;
   background: linear-gradient(135deg, #0f766e, #0ea5a5);
 }
 
-/* ================= AUTH PAGE CENTER ================= */
 .auth-page {
   min-height: 100vh;
   display: flex;
@@ -20,12 +18,10 @@ body {
   padding: 20px;
 }
 
-/* wrapper */
 .auth-wrapper {
   position: relative;
 }
 
-/* top tab */
 .auth-tab {
   position: absolute;
   top: -28px;
@@ -41,7 +37,6 @@ body {
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
 }
 
-/* card */
 .auth-container {
   width: 400px;
   background: #1e293b;
@@ -50,7 +45,6 @@ body {
   box-shadow: 0 25px 45px rgba(0, 0, 0, 0.45);
 }
 
-/* avatar */
 .avatar-wrapper {
   width: 90px;
   height: 90px;
@@ -75,7 +69,7 @@ body {
   width: 70px;
 }
 
-/* input with icon */
+
 .input-group {
   position: relative;
   margin-bottom: 14px;
@@ -103,7 +97,7 @@ body {
   color: #94a3b8;
 }
 
-/* forgot */
+
 .forgot {
   text-align: right;
   font-size: 12px;
@@ -112,7 +106,7 @@ body {
   cursor: pointer;
 }
 
-/* button */
+
 .auth-form button {
   width: 100%;
   padding: 12px;
@@ -129,7 +123,7 @@ body {
   background: #06b6d4;
 }
 
-/* ================= MOBILE ================= */
+
 @media (max-width: 480px) {
   .auth-container {
     width: 100%;
