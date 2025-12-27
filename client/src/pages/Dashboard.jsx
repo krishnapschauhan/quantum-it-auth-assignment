@@ -31,7 +31,7 @@ function Dashboard() {
           email: user.email,
           createdAt: user.createdAt
             ? new Date(user.createdAt).toLocaleDateString()
-            : new Date().toLocaleDateString(), // ✅ dynamic
+            : new Date().toLocaleDateString(),
           role: roles[index % roles.length],
           status: index % 2 === 0 ? "Active" : "Inactive",
         }));
@@ -51,7 +51,6 @@ function Dashboard() {
 
   return (
     <div style={{ padding: "40px" }}>
-      {/* Header */}
       <div
         style={{
           display: "flex",
@@ -75,7 +74,6 @@ function Dashboard() {
         </button>
       </div>
 
-      {/* Table */}
       <div
         style={{
           background: "#fff",
