@@ -30,11 +30,9 @@ function Register() {
     const data = await response.json();
 
     if (response.ok) {
-      // ✅ auto-login after register
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
-
-      // ✅ redirect to dashboard
+      
       navigate("/dashboard");
     } else {
       alert(data.message || "Registration failed");
